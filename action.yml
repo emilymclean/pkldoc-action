@@ -1,0 +1,19 @@
+name: 'Pkl Java'
+author: 'Emily McLean'
+description: 'Generates PklDoc for a Pkl module. Based on version 0.25.3 of the Pkl tool/lang.'
+inputs:
+  input-files:
+    description: 'A space separated list of doc-package-info and modules for which documentation should be generated'
+    required: true
+  output-folder:
+    description: 'Where the resulting data will be written to.'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.input-files }}
+    - ${{ inputs.output-folder }}
+branding:
+  icon: 'cpu'
+  color: 'green'

@@ -1,0 +1,8 @@
+
+module test.Example
+
+/// A message
+class Message {
+    /// The content of a message
+    content: String
+}
