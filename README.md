@@ -1,6 +1,6 @@
 # pkldoc-action Action
 
-Generates PklDoc for a Pkl module. Based on version 0.25.3 of the Pkl tool/lang.
+Generates PklDoc for a Pkl module. Based on version 0.26.1 of the Pkl tool/lang.
 
 ## Inputs
 
