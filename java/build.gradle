@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.pkl-lang:pkl-doc:0.26.1"
+    implementation "org.pkl-lang:pkl-doc:0.26.2"
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
 
