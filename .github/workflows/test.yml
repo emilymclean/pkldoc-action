@@ -15,5 +15,9 @@ jobs:
         with:
           input-files: test/doc-package-info.pkl test/example.pkl
           output-folder: test/pkldoc
-      - run: |
-          ls test/pkldoc
+      - run: ls -l test/pkldoc
+      - run: zip -r docs.zip test/pkldoc
+      - uses: actions/upload-artifact@v4
+        with:
+          name: example-pkldoc
+          path: docs.zip
