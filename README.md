@@ -14,7 +14,7 @@ Generates PklDoc for a Pkl module. Based on version 0.26.3 of the Pkl tool/lang.
 
 ## Example usage
 ```
-uses: BenMMcLean/pkldoc-action@v1
+uses: emilymclean/pkldoc-action@v1
 with:
   input-files: data.pkl doc-package-info.pkl
   output-folder: /pkldoc
