@@ -1,4 +1,4 @@
-name: 'Pkl Doc'
+name: 'pkldoc-action'
 author: 'Emily McLean'
 description: 'Generates PklDoc for a Pkl module.'
 inputs:
