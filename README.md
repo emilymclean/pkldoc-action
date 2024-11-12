@@ -1,21 +1,19 @@
-# pkldoc-action Action
+# pkldoc-action
 
-Generates PklDoc for a Pkl module. Based on version 0.26.3 of the Pkl tool/lang.
+Generates PklDoc for a Pkl module.
 
 ## Inputs
 
-### `input-files`
-
-**Required** A space separated list of doc-package-info and modules for which documentation should be generated
-
-### `output-folder`
-
-**Required** Where the resulting data will be written to.
+| Input              	| Required 	| Description                                                                                                       	| Default  	|
+|--------------------	|----------	|-------------------------------------------------------------------------------------------------------------------	|----------	|
+| `input-files`       | ✅         | The pkl file(s) to process, separated by commas.                                                                    |           |
+| `output-folder` 	  | ✅       	| Where the resulting binding will be written to.                                                        	            |    	      |
+| `pkl-version`      	|          	| The pkl version to use       	                                                                                      | 0.27.0    |
 
 ## Example usage
 ```
-uses: emilymclean/pkldoc-action@v1
+uses: emilymclean/pkldoc-action@v2
 with:
-  input-files: data.pkl doc-package-info.pkl
-  output-folder: /pkldoc
+  input-files: data.pkl,doc-package-info.pkl
+  output-folder: /generated
 ```

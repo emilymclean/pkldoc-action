@@ -1,19 +1,30 @@
 name: 'pkldoc-action'
 author: 'Emily McLean'
-description: 'Generates PklDoc for a Pkl module. Based on version 0.26.3 of the Pkl tool/lang.'
+description: 'Generates PklDoc for a Pkl module.'
 inputs:
   input-files:
-    description: 'A space separated list of doc-package-info and modules for which documentation should be generated'
+    description: 'The Pkl files to process, separated by commas.'
     required: true
   output-folder:
     description: 'Where the resulting data will be written to.'
     required: true
+  pkl-version:
+    description: The pkl version to install.
+    required: false
+    default: '0.27.0'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.input-files }}
-    - ${{ inputs.output-folder }}
+  using: 'composite'
+  steps:
+    - run: |
+        IFS=',' read -ra args <<< "${{ inputs.input-files }}"
+
+        input_files=()
+        for file in "${args[@]}"; do
+            input_files+=("/data/$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')")
+        done
+
+        docker run --rm -v "./:/data" ghcr.io/emilymclean/pkl-codegen-doc:${{ inputs.pkl-version }}-1 "${input_files[@]}" -o "/data/${{ inputs.output-folder }}"
+      shell: bash
 branding:
   icon: 'cpu'
   color: 'green'
