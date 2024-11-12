@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
       - uses: ./
         with:
-          input-files: test/doc-package-info.pkl test/example.pkl
+          input-files: test/doc-package-info.pkl,test/example.pkl
           output-folder: test/pkldoc
       - run: ls -l test/pkldoc
       - run: zip -r docs.zip test/pkldoc
