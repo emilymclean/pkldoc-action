@@ -1,0 +1,40 @@
+name: Update Pkl
+
+on:
+  workflow_dispatch:
+    inputs:
+      pkl-version:
+          description: 'The version of pkl to update to'
+          required: true
+
+jobs:
+  read-current-version:
+    runs-on: ubuntu-latest
+    outputs:
+      current-version: ${{ env.current_pkl_version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read current pkl version
+        run: echo "current_pkl_version=$(cat pkl-version)" >> $GITHUB_ENV
+  update:
+    runs-on: ubuntu-latest
+    needs:
+      - read-current-version
+    if: needs.read-current-version.outputs.current-version != github.event.inputs.pkl-version
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update pkl-version
+        run: echo "${{ github.event.inputs.pkl-version }}" > pkl-version
+      - name: Setup node for gomplate
+        uses: actions/setup-node@v4
+      - name: Render templates
+        run: |-
+          npm install -g gomplate
+          ./render-templates.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: update-pkl/feature/${{ github.event.inputs.pkl-version }}-pkl-lang
+          title: "Update Pkl from ${{ needs.read-current-version.outputs.current-version }} to ${{ github.event.inputs.pkl-version }}"
+          assignees: emilymclean
+          reviewers: emilymclean
