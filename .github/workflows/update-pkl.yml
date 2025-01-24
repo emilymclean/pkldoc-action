@@ -21,6 +21,9 @@ jobs:
     needs:
       - read-current-version
     if: needs.read-current-version.outputs.current-version != github.event.inputs.pkl-version
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - name: Update pkl-version
