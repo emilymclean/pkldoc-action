@@ -8,7 +8,7 @@ Generates PklDoc for a Pkl module.
 |--------------------	|----------	|-------------------------------------------------------------------------------------------------------------------	|----------	|
 | `input-files`       | ✅         | The pkl file(s) to process, separated by commas.                                                                    |           |
 | `output-folder` 	  | ✅       	| Where the resulting binding will be written to.                                                        	            |    	      |
-| `pkl-version`      	|          	| The pkl version to use       	                                                                                      | 0.27.2    |
+| `pkl-version`      	|          	| The pkl version to use       	                                                                                      | 0.28.0    |
 
 ## Example usage
 ```
