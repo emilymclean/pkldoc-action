@@ -11,7 +11,7 @@ inputs:
   pkl-version:
     description: The pkl version to install.
     required: false
-    default: '0.29.1'
+    default: '0.30.0'
 runs:
   using: 'composite'
   steps:
